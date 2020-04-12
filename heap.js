@@ -13,39 +13,38 @@ export class Heap {
         this.shouldBeOnTop = shouldBeOnTop
         this.queue = [null]
         this.size = 0
-
-        this.down = (idx) => {
-            let next = 2 * idx
-            if(next > this.size){
-                return
-            }
-            if(this.queue[next + 1] && this.shouldBeOnTop(this.queue[next + 1], this.queue[next])){
-                next ++
-            }
-            if(this.shouldBeOnTop( this.queue[next], this.queue[idx])){
-                this.swap(idx, next);
-                this.down(next);
-            }
-        }
-
-        this.up = (idx) => {
-            const ih = Math.floor(idx/2);
-            if(ih < 1){	
-                return
-            }
-            if(this.shouldBeOnTop(this.queue[idx], this.queue[ih])){
-                this.swap(idx, ih)
-                this.up(ih)
-            }
-        }
-    
-        this.swap = (idx1, idx2) => {
-            const aux = this.queue[idx1];
-            this.queue[idx1] = this.queue[idx2];
-            this.queue[idx2] = aux;
-        }
-    
     }
+
+    down(idx) {
+        let next = 2 * idx
+        if(next > this.size){
+            return
+        }
+        if(this.queue[next + 1] && this.shouldBeOnTop(this.queue[next + 1], this.queue[next])){
+            next ++
+        }
+        if(this.shouldBeOnTop( this.queue[next], this.queue[idx])){
+            this.swap(idx, next);
+            this.down(next);
+        }
+    }
+
+    up(idx) {
+        const ih = Math.floor(idx/2);
+        if(ih < 1){	
+            return
+        }
+        if(this.shouldBeOnTop(this.queue[idx], this.queue[ih])){
+            this.swap(idx, ih)
+            this.up(ih)
+        }
+    }
+
+    swap(idx1, idx2) {
+        const aux = this.queue[idx1];
+        this.queue[idx1] = this.queue[idx2];
+        this.queue[idx2] = aux;
+    }   
 
     add(element){
         this.queue.push(element)

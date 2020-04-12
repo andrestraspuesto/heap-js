@@ -1,0 +1,22 @@
+{
+  "name": "heap",
+  "version": "1.0.0",
+  "description": "A heap datastructure implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "andrestraspuesto",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "nodemon": "^2.0.3",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "jasmine": "^3.5.0"
+  }
+}
